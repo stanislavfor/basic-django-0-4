@@ -271,9 +271,10 @@ def upload_document(request):
 - **Обратить внимание, что важно передавать оба аргумента: `request.POST` и `request.FILES`, иначе файл не сохранится**.
 
 
-<br><br>
+<br><br><hr>
 ## Инструкция
 
+<br><br>
 ### Добавление загрузки изображений в проект
 
 1. Обновить модель `Product` в `models.py`
@@ -382,6 +383,59 @@ python -m pip install Pillow
 ```
 python manage.py runserver
 ```
+
+<br><br>
+### Добавление фавикона (`favicon`) в проект Django
+
+
+1. Создать файл фавикона
+
+Создать или скачать иконку размером **16x16** px формата `.ico` (например, `favicon.ico`).
+
+2. Разместить файл в папке статики
+
+Поместить файл `favicon.ico` в директорию проекта внутри каталога со статическими файлами, в каталог `static/`.
+
+3. Настроить пути к статическим файлам
+
+Проверить настройки в файле настроек `settings.py`. Убедится, что путь к статике указан верно:
+
+```
+STATIC_URL = '/static/'
+```
+
+Также добавить переменную `STATICFILES_DIRS`, если требуется хранить статику отдельно от приложения:
+
+```
+import os
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# Путь к директории с файлом favicon.ico
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+```
+
+#### 4. Подключить фавикон в шаблоне HTML
+
+Открыть базовый шаблон `base.html` и добавить ссылку на фавикон в тег `<head>`:
+
+```
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <!-- Другие метатеги -->
+    {% load static %}
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon"/>
+</head>
+<body>
+    <!-- Контент страницы -->
+</body>
+</html>
+```
+
+
+
 
 <br><br><br><br>
 <hr><hr><hr><hr>
