@@ -4,4 +4,6 @@
 <ul class="border bottom"> {% for product in products %}
     <li>Название: {{ product.name }}, Цена: {{ product.price }} руб., Количество: {{ product.quantity }}</li> {% empty %}
     <li>Нет продуктов в базе данных.</li> {% endfor %}
-</ul> {% include 'footer_top.html' %} {% endblock %}
+</ul>
+    {% include 'article-form.html' %}
+    {% include 'footer_top.html' %} {% endblock %}

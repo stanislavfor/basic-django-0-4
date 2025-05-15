@@ -16,5 +16,6 @@
     <input class="button" type="submit" value="Сохранить" />
 </form>
 <p><a href="{% url 'home' %}"><span class="red">Вернуться назад</span></a></p>
+    {% include 'article-form.html' %}
 {% include 'footer_top.html' %}
 {% endblock %}
